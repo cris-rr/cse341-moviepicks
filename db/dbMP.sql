@@ -21,10 +21,6 @@ INSERT INTO users (firstname, lastname, email, PASSWORD)
   VALUES('Admin', 'Superuser', 'admin@gmail.com', 'pass12345'),
         ('Cris', 'Ruiz', 'cris@gmail.com', 'pass12345');
 
-
---('1366', 'Rocky', '/i5xiwdSsrecBvO7mIfAJixeEDSg.jpg'))
---('1367', 'Rocky II', '/a9UbfUELZHj96tBVWnKrDrtnQcr.jpg'))
---('1346', 'Rocky Balboa', '/bgheMOLFVkpiZ3KhG3PGrMAPdXn.jpg'))
 INSERT INTO movies (movieid, title, poster_path, userid)
   VALUES(1366, 'Rocky', '/i5xiwdSsrecBvO7mIfAJixeEDSg.jpg', 1),
         (1367, 'Rocky II', '/a9UbfUELZHj96tBVWnKrDrtnQcr.jpg', 1),
