@@ -1,0 +1,112 @@
+
+:root {
+  --blue: #90E7F8;
+  --yellow: #E6F2B4;
+  --red: #FF9291;
+  --violet: #EEBCD6;
+  --black: #464646;
+  --redish: #FF4946;
+  --blueish: #3689f5;
+  --bluedark: #0253bd;
+  --green: #D6FF31;
+  --white: #fff;
+  --gray: #8f9294;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+
+.button {
+  color: var(--white);
+  background-color: var(--blueish);
+  font-size: 1rem;
+  min-height: 38px;
+  font-weight: 400;
+  text-align: center;
+  cursor: pointer;
+  padding: .4rem .8rem;
+  border-radius: .3rem;
+  outline: none;
+  line-height: 1.5;
+}
+
+.button-save, .button-delete {
+  margin-top: 1rem;
+}
+
+.button-delete {
+  background-color: var(--redish);
+}
+
+.input-basic {
+  width: 90%;
+  font-size: 1rem;
+  font-weight: 400;
+  padding: .4rem .8rem;
+  line-height: 1.5;
+  outline: none;
+  color: var(--black);
+  background-color: var(--white);
+  border: 0.5px solid var(--gray);
+  border-radius: .3rem;
+}
+
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+/* movies container ---------------- */
+.movies-container {
+  margin-top: 1rem;
+}
+
+.movie-list {
+  display: flex;
+  width: 100%;
+  /* overflow-x: auto; */
+  /* background-color: red; */
+  flex-flow: row wrap;
+}
+
+.movie-list img {
+  width: 150px;
+}
+
+.content {
+  display: flex;
+  width: 100%;
+  flex-flow: row wrap;
+}
+
+.providers-container {
+  margin-top: 1rem;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.provider {
+  padding-right: 0.3rem;
+}
+
+.notification {
+  color: var(--redish);
+  font-size: 1.5rem;
+}
+
+.message {
+  color: var(--bluedark);
+  font-size: 1.5rem;
+}
+
+.no-display {
+  display: none;
+}

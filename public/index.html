@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/main.css">
+  <title>The Movie Pick</title>
+</head>
+
+<body>
+  <header>
+    <h1>The Movie Pick</h1>
+  </header>
+  <nav>
+    <a id="moviePicks" href="#">My Movie Picks</a>
+    <a id="movieSearch" href="#">Movie Search</a>
+    <a id="movieRated" href="#">Top Rated Movies</a>
+    <a id="moviePopular" href="#">Popular Movies</a>
+
+  </nav>
+  <main>
+    <div class="container">
+      <h1 id="pageTitle">Search a Movie</h1>
+
+      <form id="formSearch" action="">
+        <div class="form-group">
+          <input type="text" id="inputSearch" class="input-basic" placeholder="Input a movie name">
+        </div>
+        <button id="search" class="button">Search movie</button>
+      </form>
+      <div id="moviesContainer" class="movies-container"></div>
+      <div id="providersContainer" class="providers-container"></div>
+      <div id="movieCrud" class="movie-crud no-display">
+        <form action="" method="POST">
+          <button id="save" class="button button-save">Save to My Picks</button>
+          <button id="delete" class="button button-delete">Remove from My Picks</button>
+        </form>
+        <p id="crudMessage" class="message"></p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <h3>this is the footer</h3>
+  </footer>
+
+  <script src="./js/app.js" type="module"></script>
+</body>
+
+</html>
