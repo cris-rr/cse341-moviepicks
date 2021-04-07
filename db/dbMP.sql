@@ -28,3 +28,8 @@ INSERT INTO movies (movieid, title, poster_path, userid)
         (1346, 'Rocky Balboa', '/bgheMOLFVkpiZ3KhG3PGrMAPdXn.jpg', 2),
         (1366, 'Rocky', '/i5xiwdSsrecBvO7mIfAJixeEDSg.jpg', 2),
         (1367, 'Rocky II', '/a9UbfUELZHj96tBVWnKrDrtnQcr.jpg', 2);
+
+ALTER TABLE movies RENAME COLUMN movieid TO id1; 
+ALTER TABLE movies RENAME COLUMN id TO movieid; 
+ALTER TABLE movies RENAME COLUMN id1 TO id;
+ 

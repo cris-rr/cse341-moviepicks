@@ -2,7 +2,7 @@ import ApiCall from './apicall.js';
 import LocalData from './ls.js';
 import Movie from './movie.js';
 
-const ApiMdb = new ApiCall();
+const API = new ApiCall();
 
 
 // Initial Values
@@ -65,7 +65,7 @@ function generateMoviesBlock(data) {
     message.appendChild(messageNode)
     return message
   }
-
+  log('Movies on generateMovieBlocks', movies);
   for (let i = 0; i < movies.length; i++) {
     const {
       poster_path,
@@ -74,7 +74,7 @@ function generateMoviesBlock(data) {
     } = movies[i];
 
     if (poster_path) {
-      const imageUrl = ApiMdb.TMDB_IMAGE + poster_path;
+      const imageUrl = API.TMDB_IMAGE + poster_path;
       const imageContainer = createImageContainer(imageUrl, id, title);
       section.appendChild(imageContainer);
     }
@@ -126,7 +126,7 @@ export function createVideoTemplate(data) {
   showMovieCrud(true);
 
   if (videos.length === 0) {
-    content.innerHTML = `<p>No Trailer found for this video id of ${data.id}</p>`;
+    content.innerHTML = `<p>No Trailer found for this video id of ${movieId}</p>`;
     return;
   }
 
@@ -179,7 +179,7 @@ function generateProvidersBlock(data) {
   for (let i = 0; i < providers.length; i++) {
     const provider = providers[i];
     const name = provider.provider_name;
-    const logo = ApiMdb.TMDB_PROVIDER_LOGO + provider.logo_path;
+    const logo = API.TMDB_PROVIDER_LOGO + provider.logo_path;
     block += `
     <div class="provider">
       <p>${name}</p>
@@ -244,7 +244,7 @@ searchButton.onclick = function (event) {
   const value = searchInput.value
 
   if (value) {
-    ApiMdb.searchMovie(value);
+    API.searchMovie(value);
   }
   resetInput();
 }
@@ -259,7 +259,8 @@ saveButton.onclick = function (event) {
     } else {
       movieList = [movie];
     }
-    LocalData.saveMovies(movieList)
+    API.saveMovie(movie)
+    // LocalData.saveMovies(movieList)
     crudMessage.innerHTML = 'Movie added successfully!'
   }
 }
@@ -285,13 +286,13 @@ document.onclick = function (event) {
     movieId = parseInt(event.target.dataset.movieId);
     movieTitle = event.target.dataset.movieTitle;
     moviePosterPath = event.target.src;
-    moviePosterPath = moviePosterPath.slice(ApiMdb.TMDB_IMAGE.length);
+    moviePosterPath = moviePosterPath.slice(API.TMDB_IMAGE.length);
     crudMessage.innerHTML = '';
     const section = event.target.parentElement.parentElement;
     const content = section.nextElementSibling.nextElementSibling;
     content.classList.add('content-display');
-    ApiMdb.getVideosByMovieId(movieId, content);
-    ApiMdb.getMovieProvidersByMovieId(movieId);
+    API.getVideosByMovieId(movieId, content);
+    API.getMovieProvidersByMovieId(movieId);
   }
 
   // Pages -------------------------------------------------------
@@ -299,22 +300,25 @@ document.onclick = function (event) {
     crudDelete = false;
     switch (event.target.id) {
       case 'moviePicks':
-        renderMoviePicks()
+        formSearch.classList.add('no-display')
+        pageTitle.innerHTML = 'My Movie Picks';
+        API.getSavedMovies();
+        // renderMoviePicks()
         break;
       case 'movieSearch':
         formSearch.classList.remove('no-display')
         pageTitle.innerHTML = 'Search Movies';
-        ApiMdb.searchMovie(INITIAL_SEARCH_VALUE);
+        API.searchMovie(INITIAL_SEARCH_VALUE);
         break;
       case 'movieRated':
         formSearch.classList.add('no-display')
         pageTitle.innerHTML = 'Top Rated Movies';
-        ApiMdb.getTopRatedMovies();
+        API.getTopRatedMovies();
         break;
       case 'moviePopular':
         formSearch.classList.add('no-display')
         pageTitle.innerHTML = 'Popular Movies';
-        ApiMdb.getPopularMovies();
+        API.getPopularMovies();
         break;
       default:
         log('check error in default <a> tag');
@@ -323,4 +327,5 @@ document.onclick = function (event) {
   }
 }
 
-renderMoviePicks();
+API.searchMovie(INITIAL_SEARCH_VALUE);
+// renderMoviePicks();

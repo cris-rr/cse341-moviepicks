@@ -20,10 +20,13 @@
       this.TMDB_IMAGE = TMDB_IMAGE;
       this.DEFAULT_IMAGE = DEFAULT_IMAGE;
       this.TMDB_PROVIDER_LOGO = TMDB_PROVIDER_LOGO;
+      this.HOSTNAME_URL = (window.location.href).split("/index")[0];
+      console.log('hostname form ApiCalls: ', this.HOSTNAME_URL);
     }
 
     // General methods --------------------------------------------------------
     requestMovies(url, onComplete, onError) {
+      console.log('url api :', url)
       fetch(url)
         .then((res) => res.json())
         .then(onComplete)
@@ -85,4 +88,18 @@
     }
 
 
+    // Get movies from my API -------------------------------------------------
+    getSavedMovies() {
+      const url = encodeURI(`${this.HOSTNAME_URL}api/movies`);
+      // console.log('this.HOSTNAME_URL / url: ', this.HOSTNAME_URL, url)
+      const render = renderMovies.bind({
+        title: 'Saved Pick Movies'
+      });
+      this.requestMovies(url, render);
+    }
+
+    saveMovie(movie) {
+      const url = encodeURI(`${this.HOSTNAME_URL}api/movies/create`);
+      //send the post
+    }
   }
