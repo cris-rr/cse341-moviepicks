@@ -47,12 +47,11 @@ const getMoviesByUserId = async (req, res) => {
 }
 
 const createMovie = async (req, res) => {
-  const {
-    movie
-  } = req.body;
-  const sql = 'INSERT INTO users (id, title, poster_path, add_date, userid)'
-  const result = await pool.query(sql, [movie.id, movie.title, movie.poster_path, movie.add_date, userid])
-  res.status(200)
+  const movie = req.body;
+  console.log(movie)
+  const sql = 'INSERT INTO movies (id, title, poster_path, userid) VALUES($1, $2, $3, $4 )'
+  const result = await pool.query(sql, [movie.id, movie.title, movie.poster_path, userController.loggedUserId])
+  res.status(200).send('Movie added succesfully')
 }
 
 
@@ -67,5 +66,6 @@ const deleteMovie = async (req, res) => {
 module.exports = {
   getMovies,
   getMoviesByUserId,
+  createMovie,
   deleteMovie
 }

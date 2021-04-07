@@ -98,8 +98,4 @@
       this.requestMovies(url, render);
     }
 
-    saveMovie(movie) {
-      const url = encodeURI(`${this.HOSTNAME_URL}api/movies/create`);
-      //send the post
-    }
   }

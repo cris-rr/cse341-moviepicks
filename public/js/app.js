@@ -259,9 +259,18 @@ saveButton.onclick = function (event) {
     } else {
       movieList = [movie];
     }
-    API.saveMovie(movie)
+
+    fetch('api/movies', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json, text/plain, */*',
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify(movie)
+      })
+      .then(crudMessage.innerHTML = 'Movie added successfully!')
     // LocalData.saveMovies(movieList)
-    crudMessage.innerHTML = 'Movie added successfully!'
+    // crudMessage.innerHTML = 'Movie added successfully!'
   }
 }
 
