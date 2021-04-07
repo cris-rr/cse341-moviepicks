@@ -34,16 +34,62 @@ body h1 {
   color: var(--black);
 }
 
+/* Header ------------------------------------------- */
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 0 0.2rem;
+  align-items: center;
+}
+
 /* nav and navigation ----------------------------- */
+nav {
+  margin-top: 0.5rem;
+  background-color: #3a3a3a;
+}
+
+.menubar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.menu-item {
+  display: block;
+  padding: 0 0.7rem;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.menu-item a {
+  display: block;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  padding: 0.7rem 0;
+  font-size: 0.8rem;
+}
+
+.menu-item a:hover {
+  background-color: #4c96d7;
+  color: #3a3a3a;
+  margin-top: -0.15rem;
+  height: 108%;
+}
+
+
+
+
   .navigate {
     display: block;
     margin-top: 2rem;
     font-weight: 400;
     
   }
-
-
-
+/* ------------------------------------------- */
 
 .button {
   color: var(--white);
@@ -166,4 +212,19 @@ body h1 {
   cursor: pointer;
   font-weight: bold;
   color: #ffffff;
+}
+
+/* Footer section ------------------------ */
+footer {
+  margin-top: 2rem;
+  border-top: #3a3a3a solid 2px;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+}
+
+footer>div {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  line-height: 1.1rem;
 }
