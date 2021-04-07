@@ -33,11 +33,11 @@ function renderMoviePicks() {
   formSearch.classList.add('no-display')
   pageTitle.innerHTML = 'My Movie Picks';
   API.getSavedMovies();
-  let data = LocalData.getMovies();
+  // let data = LocalData.getMovies();
   crudDelete = true;
-  if (!data.results) {
-    log('movies is null ', data.results);
-  }
+  // if (!data.results) {
+  //   log('movies is null ', data.results);
+  // }
   // log(data);
   // renderMovies(data);
 }
@@ -278,12 +278,21 @@ saveButton.onclick = function (event) {
 // Delete movies
 deleteButton.onclick = function (event) {
   event.preventDefault();
-  let index = movieList.findIndex(x => x.id === movieId);
-  if (index > -1) {
-    movieList.splice(index, 1);
-    LocalData.saveMovies(movieList);
-  }
-  renderMoviePicks();
+  fetch(`api/movies/${movieId}`, {
+      method: 'DELETE'
+    })
+    .then(
+      console.log('movie deleted')
+    )
+  renderMoviePicks()
+
+
+  // let index = movieList.findIndex(x => x.id === movieId);
+  // if (index > -1) {
+  //   movieList.splice(index, 1);
+  //   LocalData.saveMovies(movieList);
+  // }
+
 }
 
 // Click on any movies

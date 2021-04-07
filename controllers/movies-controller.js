@@ -56,9 +56,11 @@ const createMovie = async (req, res) => {
 
 
 const deleteMovie = async (req, res) => {
-  const movieid = parseint(req.params.movieid)
-  const sql = 'DELETE FROM movies WHERE movieid = $1'
-  const result = await pool.query(sql, [movieid])
+
+  const movieid = parseInt(req.params.movieid)
+  console.log(movieid)
+  const sql = 'DELETE FROM movies WHERE id = $1 AND userid = $2'
+  const result = await pool.query(sql, [movieid, userController.loggedUserId])
   console.log(result)
   res.json(`Movie %{movieid} deleted succesfully`)
 }
