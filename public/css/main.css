@@ -148,6 +148,10 @@ nav {
   width: 150px;
 }
 
+.movie-list img:hover {
+  cursor: pointer;
+}
+
 .content {
   display: flex;
   width: 100%;
