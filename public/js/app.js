@@ -32,13 +32,14 @@ let movieList = LocalData.getMovies().results;
 function renderMoviePicks() {
   formSearch.classList.add('no-display')
   pageTitle.innerHTML = 'My Movie Picks';
+  API.getSavedMovies();
   let data = LocalData.getMovies();
+  crudDelete = true;
   if (!data.results) {
     log('movies is null ', data.results);
   }
-  crudDelete = true;
   // log(data);
-  renderMovies(data);
+  // renderMovies(data);
 }
 
 export function renderMovies(data) {
@@ -309,10 +310,10 @@ document.onclick = function (event) {
     crudDelete = false;
     switch (event.target.id) {
       case 'moviePicks':
-        formSearch.classList.add('no-display')
-        pageTitle.innerHTML = 'My Movie Picks';
-        API.getSavedMovies();
-        // renderMoviePicks()
+        // formSearch.classList.add('no-display')
+        // pageTitle.innerHTML = 'My Movie Picks';
+        // API.getSavedMovies();
+        renderMoviePicks()
         break;
       case 'movieSearch':
         formSearch.classList.remove('no-display')
