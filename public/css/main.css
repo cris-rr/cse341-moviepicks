@@ -4,7 +4,8 @@
   --yellow: #E6F2B4;
   --red: #FF9291;
   --violet: #EEBCD6;
-  --black: #464646;
+  /* --black: #464646; */
+  --black: #4d4d4d;
   --redish: #FF4946;
   --blueish: #3689f5;
   --bluedark: #0253bd;
@@ -22,6 +23,26 @@ html {
 *:after {
   box-sizing: inherit;
 }
+
+body {
+  font-family: Tahoma,
+  Geneva,
+  sans-serif;
+}
+
+body h1 {
+  color: var(--black);
+}
+
+/* nav and navigation ----------------------------- */
+  .navigate {
+    display: block;
+    margin-top: 2rem;
+    font-weight: 400;
+    
+  }
+
+
 
 
 .button {
@@ -109,4 +130,40 @@ html {
 
 .no-display {
   display: none;
+}
+
+
+
+/* login ---------- */
+.login {
+  width: 300px;
+  margin: 0 auto;
+  font-family: Tahoma, Geneva, sans-serif;
+}
+
+.login h2 {
+  text-align: center;
+  color: var(--black);
+  font-size: 1.5rem;
+  padding: 20px 0 20px 0;
+}
+
+.login input[type="password"],
+.login input[type="email"] {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #dddddd;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
+
+.login input[type="submit"] {
+  width: 100%;
+  padding: 15px;
+  background-color: #535b63;
+  border: 0;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-weight: bold;
+  color: #ffffff;
 }

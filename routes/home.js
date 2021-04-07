@@ -20,9 +20,23 @@ router.get('/', (req, res) => {
 })
 
 router.get('/login', (req, res) => {
-  userController.loggedIn = true
-  console.log('get/login:', userController.loggedIn)
+  // userController.loggedIn = true
+  // console.log('get/login:', userController.loggedIn)
   res.render('login.ejs')
+
+})
+
+router.post('/login', (req, res) => {
+  const {
+    username,
+    password
+  } = req.body
+  if (username == 'cris@gmail.com' && password == 'pass12345') {
+    userController.loggedIn = true
+    res.redirect('/')
+  } else {
+    res.redirect('/login')
+  }
 
 })
 
